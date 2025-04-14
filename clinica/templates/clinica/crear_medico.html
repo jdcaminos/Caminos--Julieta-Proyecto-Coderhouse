@@ -10,8 +10,8 @@
         <a href={% url "inicio" %}>Inicio</a>
         <a href={% url "crear_paciente" %}>Crear Paciente</a>
     </nav>
-    <h1>Alta de Paciente</h1>
-    <form action={% url "crear_paciente" %} method="POST">
+    <h1>Alta de Medico</h1>
+    <form action={% url "crear_medico" %} method="POST">
         {% csrf_token %}
         
         {{formulario}}

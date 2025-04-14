@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from home.forms import CreacionPaciente, CreacionMedico
-from home.models import Paciente, Medico
+from clinica.forms import CreacionPaciente, CreacionMedico
+from clinica.models import Paciente, Medico
 
 # Create your views here.
 def inicio(request):
-    return render(request, 'home/inicio.html')
+    return render(request, 'clinica/inicio.html')
 
 def crear_paciente(request):
 
@@ -22,7 +22,7 @@ def crear_paciente(request):
     else:
         formulario = CreacionPaciente()
 
-    return render(request, 'home/crear_paciente.html', {'formulario': formulario}) 
+    return render(request, 'clinica/crear_paciente.html', {'formulario': formulario}) 
 
 def crear_medico(request):
 
@@ -39,4 +39,4 @@ def crear_medico(request):
     else:
         formulario = CreacionMedico()
 
-    return render(request, 'home/crear_medico.html', {'formulario': formulario})   
+    return render(request, 'clinica/crear_medico.html', {'formulario': formulario})   

@@ -1,5 +1,5 @@
 from django.urls import path
-from home.views import inicio, crear_paciente, crear_medico
+from clinica.views import inicio, crear_paciente, crear_medico
 urlpatterns = [
     path('', inicio, name='inicio'),
     path('pacientes/crear/', crear_paciente, name='crear_paciente'),
