@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+<h1>Modificar {{medico}}</h1>
+<form action={% url "modificar_medico" medico.id %} method="POST">
+    {% csrf_token %}
+    
+    {{formulario}}
+
+    <input type="submit" value="Modificar">
+</form>
+{% endblock contenido %}
+
+   

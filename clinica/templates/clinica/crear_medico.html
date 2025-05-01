@@ -1,22 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <nav>
-        <a href={% url "inicio" %}>Inicio</a>
-        <a href={% url "crear_paciente" %}>Crear Paciente</a>
-    </nav>
-    <h1>Alta de Medico</h1>
-    <form action={% url "crear_medico" %} method="POST">
-        {% csrf_token %}
-        
-        {{formulario}}
+{% extends "base.html" %}
 
-        <input type="submit" value="Crear">
-    </form>
-</body>
-</html>
+{% block contenido %}
+<h1>Alta de Medico</h1>
+<form action={% url "crear_medico" %} method="POST">
+    {% csrf_token %}
+    
+    {{formulario}}
+
+    <input type="submit" value="Crear">
+</form>
+{% endblock contenido %}
+
+   
