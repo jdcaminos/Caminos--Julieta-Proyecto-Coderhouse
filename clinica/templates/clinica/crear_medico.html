@@ -1,14 +1,14 @@
+
+
 {% extends "base.html" %}
 
 {% block contenido %}
-<h1>Alta de Medico</h1>
-<form action={% url "crear_medico" %} method="POST">
+<h1>Alta de Médico</h1>
+<form action="{% url 'crear_medico' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    
-    {{formulario}}
-
+    {{ formulario.as_p }}
     <input type="submit" value="Crear">
 </form>
-{% endblock contenido %}
 
-   
+{% endblock contenido %}
+  

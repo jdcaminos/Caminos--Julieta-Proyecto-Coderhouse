@@ -1,23 +1,22 @@
+
+
 {% extends "base.html" %}
 
 {% block contenido %}
-<h1>Listado de Medicos</h1>
-<p>
-    <a href={% url "crear_medico"}>Crear Medicos</a>
-</p>
-
-{% if medicos %}
+<h1>Listado de Médicos</h1>
 <ul>
     {% for medico in medicos %}
     <li>
-    {{medico}}
-    | <a href={% url "detalle_medico" medico.id}>Ver Mas</a>
-    | <a href={% url "modificar_medico" medico.id}>Modificar</a>
-    | <a href={% url "eliminar_medico" medico.id}>Eliminar</a>
+        {{ medico.nombre }} {{ medico.apellido }} <br>
+        {% if medico.imagen %}
+            <img src="{{ medico.imagen.url }}" alt="Foto de {{ medico.nombre }}" width="100">
+        {% endif %}
+        <br>
+        <a href="{% url 'modificar_medico' medico.id %}">Modificar</a> | 
+        <a href="{% url 'eliminar_medico' medico.id %}">Eliminar</a>
     </li>
-    {% endfor %}
+{% endfor %}
+
 </ul>
-{% else %}
-<p>No hay medicos creados</p>
-{% endif %}
+<a href="{% url 'crear_medico' %}">Agregar Médico</a>
 {% endblock contenido %}

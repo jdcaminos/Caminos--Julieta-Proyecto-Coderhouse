@@ -13,7 +13,7 @@ def login(request):
 
             usuario = formulario.get_user()
             django_login(request, usuario)
-            infoextra.objects.get_or_create(user=usuario)
+            InfoExtra.objects.get_or_create(user=usuario)
 
             return redirect("inicio")
 

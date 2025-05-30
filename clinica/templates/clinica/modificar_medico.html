@@ -5,7 +5,7 @@
 <form action={% url "modificar_medico" medico.id %} method="POST">
     {% csrf_token %}
     
-    {{formulario}}
+    {{form}}
 
     <input type="submit" value="Modificar">
 </form>

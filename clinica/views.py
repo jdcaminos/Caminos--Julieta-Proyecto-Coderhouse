@@ -34,10 +34,10 @@ def crear_paciente(request):
 def crear_medico(request):
 
     print('Estos son los datos del GET', request.GET)
-    print('Estos son los datos del GET', request.POST)
+    print('Estos son los datos del POST', request.POST)
 
     if request.method == "POST":
-        formulario = CreacionMedico(request.POST)
+        formulario = CreacionMedico(request.POST, request.FILES)
         if formulario.is_valid():
             info = formulario.cleaned_data
             medico = Medico(nombre=info.get('nombre'), apellido=info.get('apellido'))
@@ -50,11 +50,11 @@ def crear_medico(request):
 
 def listado_de_medicos(request):
     medicos = Medico.objects.all()
-    return render (request, 'home/listado_de_medicos.html', {'medicos': medicos})
+    return render (request, 'clinica/listado_de_medicos.html', {'medicos': medicos})
 
 def detalle_medico(request, medico_en_especifico):
     medico = Medico.objects.get(id=medico_en_especifico)
-    return render(request, 'cinica/detalle_medico.html', {'medico': medicos})
+    return render(request, 'clinica/detalle_medico.html', {'medico': medicos})
 
 class VistaDetalleMedico(DetailView):
     model = Medico
@@ -63,11 +63,11 @@ class VistaDetalleMedico(DetailView):
 class VistaModificarMedico(LoginRequiredMixin, UpdateView):
     model = Medico
     template_name = "clinica/modificar_medico.html"
-    fields = ["nombre", "apellido"]
-    success_url = reverse_lazy('Listado_de_medicos')
+    fields = ["nombre", "apellido", "imagen"]
+    success_url = reverse_lazy('listado_de_medicos')
 
 class VistaEliminarMedico(LoginRequiredMixin, DeleteView):
     model = Medico
     template_name = "clinica/eliminar_medico.html"
-    success_url = reverse_lazy('Listado_de_medicos')
+    success_url = reverse_lazy('listado_de_medicos')
 
